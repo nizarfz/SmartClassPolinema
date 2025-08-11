@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMART CLASS D4 ELEKTRONIKA</title>
+  <link rel="icon" type="image/x-icon" href="./img/logo-polinema.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="https://cdn.jsdelivr.net/gh/keshikan/DSEG@v0.46/DSEG7Classic/DSEG7Classic-Regular.woff2" rel="stylesheet" type="font/woff2">
+  <style>
+    body {
+        background-color: white;
+        color: black;
+        transition: 0.3s;
+    }
+
+    .dark-mode {
+        background-color: #121212;
+        color: white;
+        .tabel{
+          color:rgb(255, 255, 255);
+        }
+    }
+    .dark-mode .attendance-header th {
+      background-color: #444;
+    }
+    .dark-mode .attendance-header th {
+      background-color: #202020;
+    }
+    .dark-mode .switch-circle {
+      transform: translateX(30px);
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 60px;
+      height: 30px;
+      background-color: #ccc;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .switch-circle {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      background-color: white;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .dark-mode .toggle-switch {
+      background-color: #444;
+    }
+</style>
+</head>
+<body>
+
+  <div class="menu">
+    <div style="display: flex; gap: 10px;">
+      <img src="./img/logo-polinema.png" style="height: 60px; width: 60px; align-content: center;">
+      <div style="align-content: center;">
+        <label>SMART CLASS</label>
+        <br>
+        <label class="polinema">POLINEMA</label>
+      </div>
+    </div>    
+    <a href="#" style="text-align: center;"><i class="fa fa-home" style="font-size:24px; "></i><br>Home</a>
+    <a href="./smartmeter/" style="text-align: center;"><i class="fa fa-bolt" style="font-size:24px;"></i><br>Smart Meter</a>
+    <a href="#" style="text-align: center;"><i class="fa fa-dashboard" style="font-size:24px;"></i><br>Smart Class</a>
+    <a href="/absensi_mahasiswa/dashboard.php" style="text-align: center;"><i class="	fa fa-calendar-check-o" style="font-size:24px;"></i><br>Smart Absensi</a>
+    <div style="text-align: center;">
+      Tema
+    <div class="toggle-switch" onclick="toggleTheme()">
+      <div class="switch-circle"></div>
+    </div>
+    </div>
+  </div>
+  <div id="toast-container"></div>
+  <div class="content">
+    <div class="isicontent">
+      <h2>Power Meter</h2>
+      <div>
+        <h3>Kelas 1</h3>
+        <div class="gauge-container">
+          <div>
+            <div>VOLTAGE</div>
+            <div class="display-container">
+              <div id="voltage-display-1" class="seven-segment">000.0</div>
+              <div class="unit">V</div>
+            </div>
+            <label id="voltage_status_1">NORMAL</label>
+            <br>
+            <label>.</label>
+          </div>
+          <div>
+            <div>AMPERE</div>
+            <div class="display-container">
+              <div id="ampere-display-1" class="seven-segment">000.0</div>
+              <div class="unit">A</div>
+            </div>
+            <label id="ampere-percent-display-1">LOAD : 0%</label>
+            <br>
+            <label>MAX : 10A</label>
+          </div>
+          <div>
+            <div>POWER</div>
+          <div class="display-container">
+            <div id="power-display-1" class="seven-segment">000.0</div>
+            <div class="unit">W</div>
+          </div>
+          <label id="power-percent-display-1">LOAD : 0%</label>
+            <br>
+            <label>MAX : 2 KW</label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>Kelas 2</h3>
+        <div class="gauge-container">
+          <div>
+            <div>VOLTAGE</div>
+            <div class="display-container">
+              <div id="voltage-display-2" class="seven-segment">000.0</div>
+              <div class="unit">V</div>
+            </div>
+            <label id="voltage_status_2">NORMAL</label>
+            <br>
+            <label>. </label>
+          </div>
+          <div>
+            <div>AMPERE</div>
+            <div class="display-container">
+              <div id="ampere-display-2" class="seven-segment">000.0</div>
+              <div class="unit">A</div>
+            </div>
+            <label id="ampere-percent-display-2">LOAD : 0%</label>
+            <br>
+            <label>MAX : 10A</label>
+          </div>
+          <div>
+            <div>POWER</div>
+          <div class="display-container">
+            <div id="power-display-2" class="seven-segment">000.0</div>
+            <div class="unit">W</div>
+          </div>
+          <label id="power-percent-display-2">LOAD : 0%</label>
+            <br>
+            <label>MAX : 2 KW</label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="linegraph">
+          <br>
+          <h4>Grafik Smartmeter</h4>
+          <label for="interval">Pilih Interval: </label>
+          <select id="interval">
+            <option value="2jam">2 Jam</option>
+            <option value="realtime">Realtime</option>
+            <option value="12jam">12 Jam</option>
+            <option value="1hari">1 Hari</option>
+            <option value="1minggu">1 Minggu</option>
+            <option value="1bulan">1 Bulan</option>
+          </select>
+          <canvas id="chartVoltagePower"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="isicontent">
+      <h2>Smart Class</h2>
+      <div>
+        <h3>Kelas 1</h3>
+        <div class="container-smartclass">
+          <div class="left-column-smartclass">
+              <div class="small-box">
+                <h4>Temp</h4>
+                <div class="txtclass" id="smartclass_temp1">0°C</div>
+              </div>
+              <div class="small-box">
+                <h4>Humidity</h4>
+                <div class="txtclass" id="smartclass_humi1">0%</div>
+              </div>
+              <div class="small-box">
+                <h4>UV</h4>
+                <div class="txtclass2" id="smartclass_uv1">not detected</div>
+              </div>
+              <div class="small-box">
+                <h4>People</h4>
+                <div class="txtclass" id="smartclass_people1">0</div>
+              </div>
+          </div>
+          <div class="right-column-smartclass">
+              <div class="large-box">
+                <h4>Lamp</h4>
+                <div class="txtclass2" id="smartclass_lamp1"></div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>Kelas 2</h3>
+        <div class="container-smartclass">
+            <div class="left-column-smartclass">
+                <div class="small-box">
+                  <h4>Temp</h4>
+                  <div class="txtclass">0°C</div>
+              </div>
+              <div class="small-box">
+                <h4>Humidity</h4>
+                <div class="txtclass">0%</div>
+              </div>
+              <div class="small-box">
+                <h4></h4>
+              </div>
+              <div class="small-box">
+                <h4></h4>
+              </div>
+          </div>
+          <div class="right-column-smartclass">
+              <div class="large-box">
+                <h4></h4>
+                </div>
+            </div>
+          </div>
+      </div>
+      <div class="linegraph">
+        <h4>Grafik</h4>
+        <label for="interval2">Pilih Interval: </label>
+          <select id="interval2">
+            <option value="realtime">Realtime</option>
+            <option value="12jam">12 Jam</option>
+            <option value="1hari">1 Hari</option>
+            <option value="1minggu">1 Minggu</option>
+            <option value="1bulan">1 Bulan</option>
+          </select>
+        <canvas id="chartEnvironment"></canvas>
+      </div>
+    </div>
+
+    <div class="isicontent">
+      <h2>Smart Absensi</h2>
+      <h3>Jumlah Hadir & Mata Kuliah</h3>
+      <div class="div_absensi">
+        <div class="jumlah_dosen">
+          <div class="isijumlah">
+            <label>Dosen</label><br>
+            <label id="dosen_hadir" style="font-size: 25pt;">0</label><label>/</label><label id="jumlah_dosen">0</label>
+          </div>
+        </div>
+        <div class="jumlah_mahasiswa"><div class="isijumlah">
+          <label>Mahasiswa</label><br>
+          <label id="mahasiswa_hadir" style="font-size: 25pt;">0</label><label>/</label><label id="jumlah_mahasiswa">0</label>
+        </div></div>
+        <div class="jumlah_matkul"><div class="isijumlah">
+          <label>Mata Kuliah</label><br>
+          <label id="matkul" style="font-size: 25pt;">0</label><label>/</label><label id="jumlah_matkul">0</label>
+        </div></div>
+      </div><br>
+      <h3>Data Input Absen Terakhir</h3>
+      <div class="tabel" id="mahasiswa-table-container"></div>
+      <div class="tabel" style="margin-top: -30px;" id="dosen-table-container"></div>
+    </div>
+  </div>
+  <script>
+    function toggleTheme() {
+        document.body.classList.toggle("dark-mode");
+
+        // Simpan preferensi di localStorage
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+            //document.getElementById("darkswitch").textContent = "MODE TERANG";
+        } else {
+            localStorage.setItem("theme", "light");
+        }
+    }
+
+    // Terapkan mode gelap jika sebelumnya sudah dipilih
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+</script>
+<footer>
+  &copy; 2025 SmartClass Team D4 Teknik Elektronika POLINEMA. All rights reserved.
+</footer>
+</body>
+<script src="./notification.js"></script>
+<script src="7segment.js"></script>
+<script src="script-linegraph.js"></script>
+<script src="absence.js"></script>
+</html>

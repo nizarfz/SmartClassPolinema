@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="./img/logo-polinema.png">
+  <title>IoT D-IV Teknik Elektronika PSDKU POLITEKNIK NEGERI MALANG DI KEDIRI</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .slider-container {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slider-wrapper {
+      display: flex;
+      width: 600%; /* 6 halaman */
+      height: 100%;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    iframe {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slider-container">
+  <div class="slider-wrapper" id="slider">
+    <iframe src="https://smartclass.elektrolosskediri.my.id"></iframe>
+    <iframe src="https://plts.elektrolosskediri.my.id/pvoutput.php"></iframe>
+    <iframe src="https://plts.elektrolosskediri.my.id/batteryoutput.php"></iframe>
+    <iframe src="https://plts.elektrolosskediri.my.id/inverteroutput.php"></iframe> <!-- Tambahan -->
+    <iframe src="https://plts.elektrolosskediri.my.id/plnoutput.php"></iframe> <!-- Tambahan -->
+    <iframe src="https://picohydro.elektrolosskediri.my.id/%20revisi.html"></iframe> <!-- Tambahan -->
+  </div>
+</div>
+
+<script>
+  const slider = document.getElementById("slider");
+  const durations = [30000, 10000, 10000, 10000, 10000, 15000]; // durasi per slide (ms)
+  let index = 0;
+
+  function nextSlide() {
+    index = (index + 1) % 6; // total slide = 6
+    slider.style.transform = `translateX(-${index * 100}vw)`;
+    setTimeout(nextSlide, durations[index]);
+  }
+
+  setTimeout(nextSlide, durations[index]); // mulai dari slide pertama
+</script>
+
+</body>
+</html>

@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.menu {
+    background-color: #141e5f;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+
+.menu a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Saat layar kecil, ubah menjadi 1 kolom */
+@media (max-width: 768px) {
+    .content {
+        grid-template-columns: 1fr; /* Semua elemen dalam 1 kolom */
+    }
+}
+
+footer {
+    background-color: #141e5f;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 0px;
+    bottom: 0;
+}
+
+.gauge-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr)); /* Pastikan gauge terbagi rata */
+    gap: -10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.gauge-item {
+    width: 150px;  /* Ukuran lebih besar */
+    height: 120px;
+}
+
+.gauge-item svg {
+    width: 100%;
+    height: 150%;
+}
+
+.isicontent {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-smartclass {
+    display: flex;
+    width: 100%;
+    height: 150px;
+}
+
+.left-column-smartclass {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1px;
+    padding: 1px;
+    width: 60%;
+    height: 100%; /* Ensure it takes the full height of the container */
+}
+
+.right-column-smartclass {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    padding: 1px;
+    height: 100%; /* Ensure it takes the full height of the container */
+}
+
+.small-box {
+    width: 100%;
+    height: 100%;
+}
+
+.large-box {
+    width: 100%;
+    height: 100%;
+}
+
+.txtclass{
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 200;
+    font-size: 1.6em;
+    font-style: normal;
+}
+.txtclass2{
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 200;
+    font-size: 1.4em;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'digital7mono';
+    src: url('./digital-7mono.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+.display-container {
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: center;     /* center vertically */
+    text-align: center;
+    gap: 4px;
+}
+  
+.seven-segment {
+    font-family: 'digital7mono';
+    font-size: 2em;
+    letter-spacing: 1px;
+}
+  
+.unit {
+    font-family: 'digital7mono';
+    font-size: 2em;
+  }
+
+ /* Container for all toasts, fixed at bottom center */
+    #toast-container {
+      position: fixed;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column-reverse; /* New toasts appear at bottom, stack upwards */
+      gap: 10px;
+      z-index: 1000;
+      pointer-events: none; /* Allow clicks to pass through container */
+      max-width: 300px;
+      width: 100%;
+    }
+
+    /* Individual toast style */
+    .toast {
+      background-color: #333;
+      color: #fff;
+      padding: 16px;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      font-size: 17px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: auto; /* Enable interaction on toast */
+      transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+    }
+
+    /* Show toast: fade in and slide up */
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hide toast: fade out and slide down */
+    .toast.hide {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+
+/* Table styling */
+    .attendance-table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    .attendance-caption {
+      font-size: 1em;
+      margin-bottom: 10px;
+      font-weight: bold;
+      text-align: left;
+      caption-side: top;
+      padding: 8px 0;
+    }
+
+    .attendance-header th {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+      background-color: #f4f4f4;
+      text-align: left;
+    }
+
+    .attendance-body td {
+      border: 1px solid #ccc;
+      padding: 8px 12px;
+    }
+
+.darkswitch{
+    width: 90px;
+    height: 30px;
+    padding: 10px 20px;
+    font-size: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+}
+
+.div_absensi{
+    color: #fff;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.jumlah_dosen, .jumlah_mahasiswa, .jumlah_matkul{
+    text-align: center;
+    width: 30%;
+    height: 70px;
+    border-radius: 15px;
+    border-style: solid;
+    background-color: #041098;
+    padding: 4px;
+    border-color: #141e5f;
+}
+
+.isijumlah{
+    margin-top: -7px;
+}
